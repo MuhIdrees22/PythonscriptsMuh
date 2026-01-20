@@ -12,14 +12,14 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = files[0]
 
 # 2) Set your project + topic
 project_id = "pure-wall-451118-g4"
-topic_name = "labels"  # <-- change to the topic you created
+topic_name = "labels"  
 
 publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path(project_id, topic_name)
 print(f"Publishing CSV rows to {topic_path}")
 
 # 3) Read CSV and publish each row
-csv_file = "Labels.csv"  # <-- ensure this matches the exact filename
+csv_file = "Labels.csv"  # <-- filename
 
 with open(csv_file, newline="", encoding="utf-8") as f:
     reader = csv.DictReader(f)  # each row becomes a dict automatically
@@ -37,3 +37,4 @@ with open(csv_file, newline="", encoding="utf-8") as f:
         print(f"Published row {count} (message_id={msg_id}): {row}")
 
 print(f"Done. Published {count} rows.")
+
