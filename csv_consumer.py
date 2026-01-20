@@ -11,7 +11,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = files[0]
 
 # 2) Set your project + subscription
 project_id = "pure-wall-451118-g4"
-subscription_id = "labels-sub"  # <-- change to your subscription name
+subscription_id = "labels-sub"  # <--subscription ID
 
 subscriber = pubsub_v1.SubscriberClient()
 subscription_path = subscriber.subscription_path(project_id, subscription_id)
@@ -39,3 +39,4 @@ try:
 except KeyboardInterrupt:
     streaming_pull_future.cancel()
     print("Stopped consumer.")
+
